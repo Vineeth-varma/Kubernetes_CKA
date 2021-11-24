@@ -25,12 +25,17 @@
 * **Node Controller**  - Responsible for monitoring the state of the Nodes and taking necessary actions to keep the application running.
 * **Replication Controller**  - Responsible for monitoring the status of replicasets and ensuring that the desired number of pods are available at all time within the set.
 * There are many more such controllers available within kubernetes like Deployment Controller, Node Controller, Namespace Controller, Endpoint Controller, PV-Binder, PV-Protection controllers etc...,
+
 **Kube-Scheduler** 
 * kube-scheduler is responsible for scheduling pods on nodes.
 * The kube-scheduler is only responsible for deciding which pod goes on which node. It doesn't actually place the pod on the nodes, that's the job of the kubelet.
+
 **Kubelet** 
 * Kubelet is the sole point of contact for the kubernetes cluster.
 * The kubelet will create the pods on the nodes, the scheduler only decides which pods goes where.
+
 **Kubeproxy**
 * Within Kubernetes Cluster, every pod can reach every other pod, this is accomplish by deploying a pod networking cluster to the cluster.
 * Kube-Proxy is a process that runs on each node in the kubernetes cluster.
+
+**Note:** For installing control plane copmponents manual/kubeadm follow this link https://github.com/kodekloudhub/certified-kubernetes-administrator-course
