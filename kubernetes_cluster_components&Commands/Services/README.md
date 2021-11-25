@@ -33,15 +33,17 @@ subsets:
 ```
 
 ## There are three types of services
-### NodePort
 
-* Where the service makes an internal POD accessible on a POD on the NODE.
-* To access the application from CLI instead of web browser
-
-  ```$ curl http://192.168.1.2:30008```
+### HeadLess Service
+* Sometimes you don't need load-balancing and a single Service IP. In this case, you can create what are termed "headless" Services, by explicitly specifying "None" for the cluster IP (.spec.clusterIP).
 
 ### ClusterIP
-* In this case the service creates a Virtual IP inside the cluster to enable communication between different services such as a set of frontend servers to a set of backend servers.
-
+* Exposes the Service on a cluster-internal IP. Choosing this value makes the Service only reachable from within the cluster. This is the default ServiceType.
+### NodePort
+* Exposes the Service on each Node's IP at a static port (the NodePort). A ClusterIP Service, to which the NodePort Service routes, is automatically created. You'll be able to contact the NodePort Service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
 ### LoadBalancer
-* Where the service provisions a loadbalancer for our application in supported cloud providers.
+* Exposes the Service externally using a cloud provider's load balancer. NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
+### ExternalName
+* Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value. No proxying of any kind is set up. 
+### Ingress
+* You can also use Ingress to expose your Service. Ingress is not a Service type, but it acts as the entry point for your cluster. It lets you consolidate your routing rules into a single resource as it can expose multiple services under the same IP address
