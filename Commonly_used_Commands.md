@@ -28,9 +28,3 @@
 * ```kubectl expose pod <pod_name> --port=6379 --name redis-service --dry-run=client -o yaml```     Here pod labels will be attached to the service
 * ```kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o yaml ``` This will not generate correct pod labels, modify once the service file is created.
 * ```kubectl expose pod nginx --port=80 --name nginx-service --type=NodePort --dry-run=client -o yaml```     Type Nodeport
-  
-**Labels & Selectors**
-* ```kubectl get po --show-labels ```          It shows all the labels attached to a pod.
-* ```kubectl get all --show-labels ```         It shows all the labels in a default namespace.
-* ````kubectl get po -l app=app1 ```            Use 'l-flag' to know which pod is using a particualr label.
-* ```kubectl get pods --selector env=dev ```   It displays the pods with that label or selector.
