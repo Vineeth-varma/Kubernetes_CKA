@@ -15,12 +15,14 @@ kubectl uncordon node1                          # Apply this after updates are d
 ```
 ### Cluster Upgrade Process
 * For this upgrade process first try out using katakoda kubernetes playground
+
 **kubeadm upgrade** - Google - You can find the procedure to upgrade components.  https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
 * Same process for both worker and master nodes but the upgrade process for worker has to be done by ssh into worker node.
+
 **Note:** cordon,drain, uncordon commands have to be used in master node only for worker.
 ### Procedure:
 **Master:**
-``
+```
 kubectl drain controlplane/master 
 kubeadm upgarde plan                    # It gives the versions available and other details related to upgarde process.
 
